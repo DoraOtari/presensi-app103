@@ -9,7 +9,9 @@
                 <label class="form-label">Email</label>
                 <select class="form-select" name="user_id">
                     <option selected disabled>Select one</option>
-                    <option value="">New Delhi</option>
+                    @foreach ($list_users as $user)
+                    <option value="{{ $user->id }}">{{ $user->email }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
