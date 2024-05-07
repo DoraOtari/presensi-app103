@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     @livewireStyles
+    @livewireScripts
 </head>
 
 <body>
@@ -35,25 +36,34 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav nav-underline  justify-content-start flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a style="color: yellowgreen" class="nav-link active" aria-current="page" href="#"><i class="bi bi-house-heart"></i> Beranda</a>
+                                <a 
+                                    class="nav-link {{ Request::is('dashboard') ? 'active text-primary' : '' }}" 
+                                    href="{{ url('dashboard') }}"><i class="bi bi-house-heart"></i> Dashboard
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="bi bi-person-bounding-box"></i> Profil</a>
+                                <a 
+                                    class="nav-link {{ Request::is('profil') ? 'active text-primary' : '' }}" 
+                                    href="{{ url('profil') }}"><i class="bi bi-person-bounding-box"></i> Profil
+                                </a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdownId"
+                                <a class="nav-link dropdown-toggle {{ Request::is(['jabatan','karyawan']) ? 'active text-primary' : '' }}" href="#" id="dropdownId"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-person-badge"></i> Data</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownId">
-                                    <a class="dropdown-item" href="#"><i class="bi bi-diagram-2"></i> Jabatan</a>
-                                    <a class="dropdown-item" href="#"><i class="bi bi-people"></i> Karyawan</a>
+                                    <a class="dropdown-item {{ Request::is('jabatan') ? 'active' : ''}}" href="{{ url('jabatan') }}"><i class="bi bi-diagram-2"></i> Jabatan</a>
+                                    <a class="dropdown-item {{ Request::is('karyawan') ? 'active' : ''}}" href="{{ url('karyawan') }}"><i class="bi bi-people"></i> Karyawan</a>
                                 </div>
                             </li>
                         </ul>
                         <form method="POST" action="{{ Route('logout') }}" class="d-flex">
                             @csrf
                             @if (Auth::user()->avatar)
-                                <img src="https://placehold.co/300?text=A" width="45" class="rounded-circle img-thumbnail">
-                                
+                                <img src="{{ asset('storage/'.Auth::user()->avatar) }}" 
+                                    width="45" 
+                                    class="rounded-circle shadow border border-3 border-primary"
+                                    style="aspect-ratio:1/1"
+                                >
                             @else
                                 <img src="https://placehold.co/300?text=A" width="45" class="rounded-circle img-thumbnail">
                             @endif
@@ -86,7 +96,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
-    @livewireScripts
 </body>
 
 </html>

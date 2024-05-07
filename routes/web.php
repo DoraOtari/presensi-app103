@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,17 @@ Route::post('/upload', function(Request $req){
         ]
     );
     return redirect()->back();
+});
+
+Route::get('/jabatan', function(){
+    $jabatan = DB::table('position')->get();
+    return view('admin.konten.jabatan', [ 'jabatan' => $jabatan ]);
+});
+
+Route::get('/karyawan',function(){
+    return view('admin.konten.karyawan.index');
+});
+
+Route::get('/karyawan/create', function(){
+    return view('admin.konten.create');
 });
