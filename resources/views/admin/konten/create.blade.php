@@ -9,6 +9,7 @@
                 <input type="text" name="nama" class="form-control" placeholder="masukan nama karyawan">
             </div>
             <livewire:nik-otomatis />
+            <livewire:api-daerah />
         </form>
     </div>
 @endsection
