@@ -10,6 +10,13 @@
             </div>
             <livewire:nik-otomatis />
             <livewire:api-daerah />
+            <div class="mb-3">
+                <div class="label form-label">Alamat</div>
+                <textarea name="alamat" placeholder="masukan alamat" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="text-end">
+                <button type="submit" class="btn btn-dark">submit</button>
+            </div>
         </form>
     </div>
 @endsection

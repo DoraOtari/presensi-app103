@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KaryawanController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -52,10 +53,6 @@ Route::get('/jabatan', function(){
     return view('admin.konten.jabatan', [ 'jabatan' => $jabatan ]);
 });
 
-Route::get('/karyawan',function(){
-    return view('admin.konten.karyawan.index');
-});
-
-Route::get('/karyawan/create', function(){
-    return view('admin.konten.create');
-});
+Route::get('/karyawan',[KaryawanController::class, 'tampil']);
+Route::get('/karyawan/create', [KaryawanController::class, 'buat']);
+Route::post('/karyawan', [KaryawanController::class,'simpan']);
