@@ -49,7 +49,7 @@ Route::post('/upload', function(Request $req){
 });
 
 Route::get('/jabatan', function(){
-    $jabatan = DB::table('position')->get();
+    $jabatan = DB::table('jabatan')->get();
     return view('admin.konten.jabatan', [ 'jabatan' => $jabatan ]);
 });
 

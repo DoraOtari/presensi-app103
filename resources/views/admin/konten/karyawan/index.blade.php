@@ -18,15 +18,18 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
+                @foreach ($karyawan as $item)
                 <tr>
                     <td></td>
-                    <td></td>
+                    <td>{{ $item->nama }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
+                @endforeach
+                
             </tbody>
         </table>
     </div>
