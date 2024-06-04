@@ -56,3 +56,4 @@ Route::get('/jabatan', function(){
 Route::get('/karyawan',[KaryawanController::class, 'tampil']);
 Route::get('/karyawan/create', [KaryawanController::class, 'buat']);
 Route::post('/karyawan', [KaryawanController::class,'simpan']);
+Route::delete('/karyawan/{id}', [KaryawanController::class, 'destroy']);

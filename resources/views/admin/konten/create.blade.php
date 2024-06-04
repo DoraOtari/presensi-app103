@@ -1,6 +1,13 @@
 @extends('admin.bootstrap5')
 @section('konten')
     <div class="container-fluid mt-2">
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="text-danger">{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
         <h4><i class="bi-person"></i> Form Karyawan</h4>
         <form action="{{ url('/karyawan') }}" method="post">
             @csrf
