@@ -16,7 +16,7 @@ class KaryawanController extends Controller
     }
 
     function buat() {
-        return view('admin.konten.create', ['jabatan' => Jabatan::all() ]);
+        return view('admin.konten.karyawan.create', ['jabatan' => Jabatan::all() ]);
     }
 
     function simpan(Request $request){
@@ -60,6 +60,8 @@ class KaryawanController extends Controller
             'provinsi' => 'required',
             'kota' => 'required',
             'alamat' => 'required',
+        ],[
+          'alamat.required' => 'alamat wajib di isi masbro / mbabro' 
         ]);
 
         Karyawan::where('id', $karyawan->id)->update($valid);
