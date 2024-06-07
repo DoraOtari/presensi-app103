@@ -31,16 +31,7 @@ class KaryawanController extends Controller
             'alamat' => 'required',
         ]);
 
-        Karyawan::create([
-            'nama' => request('nama'),
-            'jabatan_id' => request('jabatan_id'),
-            'nik' => request('nik'),
-            'user_id' => request('user_id'),
-            'tanggal_lahir' => request('tanggal_lahir'),
-            'provinsi' => request('provinsi'),
-            'kota' => request('kota'),
-            'alamat' => request('alamat'),
-        ]);
+        Karyawan::create($valid);
 
         return redirect('/karyawan')->with('notif','Berhasil tambah data karyawan');
     }
@@ -49,6 +40,30 @@ class KaryawanController extends Controller
        Karyawan::destroy($id); //kode hapus
        //kode pindah halaman beserta notif (☞ﾟヮﾟ)☞
        return redirect('karyawan')->with('notif', 'Berhasil hapus data karyawan');
+    }
+
+    function edit(Karyawan $karyawan) {
+        return view('admin.konten.edit', [
+            'jabatan' => Jabatan::all(),
+            'karyawan' => $karyawan
+            ]
+    );
+    }
+
+    function update(Request $request, Karyawan $karyawan){
+        $valid = $request->validate([
+            'nama' => 'required',
+            'jabatan_id' => 'required',
+            'nik' => 'required',
+            'user_id' => 'required',
+            'tanggal_lahir' => 'required',
+            'provinsi' => 'required',
+            'kota' => 'required',
+            'alamat' => 'required',
+        ]);
+
+        Karyawan::where('id', $karyawan->id)->update($valid);
+        return redirect('/karyawan')->with('notif',"Berhasil update karyawan $karyawan->nama");
     }
 
 }

@@ -10,6 +10,15 @@ class NikOtomatis extends Component
 {
     public $tgl;
     public $userId;
+    public $karyawan;
+
+    public function mount($karyawan = null){
+        if ($karyawan) {
+            $this->tgl = $karyawan->tanggal_lahir;
+            $this->userId = $karyawan->user_id;
+        }
+
+    }
 
     public function buatNik() {
         return Str::replace('-','',$this->tgl).$this->userId;

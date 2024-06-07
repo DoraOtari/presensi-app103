@@ -57,3 +57,5 @@ Route::get('/karyawan',[KaryawanController::class, 'tampil']);
 Route::get('/karyawan/create', [KaryawanController::class, 'buat']);
 Route::post('/karyawan', [KaryawanController::class,'simpan']);
 Route::delete('/karyawan/{id}', [KaryawanController::class, 'destroy']);
+Route::get('karyawan/{karyawan}/edit',[KaryawanController::class, 'edit']);
+Route::get('karyawan/{karyawan}', [KaryawanController::class, 'update']);
