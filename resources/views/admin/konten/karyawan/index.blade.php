@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @foreach ($karyawan as $item)
+                @foreach ($karyawan as $key => $item)
                     <tr>
                         <td>
                             <img src="{{ asset('storage/' . $item->user->avatar) }}" width="45">
@@ -32,9 +32,15 @@
                         <td>{{ $item->user->email }}</td>
                         <td>{{ $item->jabatan->nama_jabatan }}</td>
                         <td>
-                            <a href='{{ url("karyawan/$item->id") }}'>
+                            <button 
+                                type="button" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#exampleModal{{ $key }}"
+                                class="btn border-0"
+                            >
                                 <i class="bi-eye text-primary"></i>
-                            </a>
+                            </button>
+                            @include('admin.konten.karyawan.detail')
                         </td>
                         <td>
                             <a href='{{ url("karyawan/$item->id/edit") }}'>

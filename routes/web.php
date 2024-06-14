@@ -59,3 +59,5 @@ Route::post('/karyawan', [KaryawanController::class,'simpan']);
 Route::delete('/karyawan/{id}', [KaryawanController::class, 'destroy']);
 Route::get('karyawan/{karyawan}/edit',[KaryawanController::class, 'edit']);
 Route::put('karyawan/{karyawan}', [KaryawanController::class, 'update']);
+
+Route::view('/absen','admin.konten.karyawan.absen');
