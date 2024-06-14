@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\KaryawanController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -60,4 +61,5 @@ Route::delete('/karyawan/{id}', [KaryawanController::class, 'destroy']);
 Route::get('karyawan/{karyawan}/edit',[KaryawanController::class, 'edit']);
 Route::put('karyawan/{karyawan}', [KaryawanController::class, 'update']);
 
-Route::view('/absen','admin.konten.karyawan.absen');
+Route::get('/absen', [AbsenController::class, 'tampil']);
+Route::post('/absen', [AbsenController::class, 'simpan']);

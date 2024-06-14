@@ -18,11 +18,13 @@
 
 <body>
     <main class="col-lg-3 mx-auto">
+        <form action="{{ url('/absen') }}" method="post">
+            @csrf
         <div id="my_camera" style="width:340px; height:240px;"></div>
-        <input id="tangkap" type="hidden">
+        <input id="tangkap" type="hidden" name="foto">
         <div class="d-flex justify-content-between mt-4">
-            <button onclick="reset()" class="btn btn-success"><i class="bi-arrow-counterclockwise"></i></button>
-            <button onclick="rekam()" class="btn btn-primary"><i class="bi-camera"></i></button>
+            <button type="button" onclick="reset()" class="btn btn-success"><i class="bi-arrow-counterclockwise"></i></button>
+            <button type="button" onclick="rekam()" class="btn btn-primary"><i class="bi-camera"></i></button>
         </div>
         <div class="mt-2">
             <label class="form-label">Keterangan</label> <br>
@@ -36,10 +38,11 @@
             </div>
         </div>
         <div id="map" style="height: 180px"></div>
-        <input type="hidden" id="lokasiUser">
+        <input type="hidden" id="lokasiUser" name="lokasi">
         <div class="text-end mt-3">
             <button type="submit" class="btn btn-dark">Submit</button>
         </div>
+    </form>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
