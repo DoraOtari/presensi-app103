@@ -1,3 +1,4 @@
 eko 2
 jili 1
 fajar 3
+Baria 1

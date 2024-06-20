@@ -33,7 +33,7 @@ class AbsenController extends Controller
 
         // data tambah
         $jam = date('H.i');
-        $tgl = date('d-m-Y');
+        $tgl = date('Y-m-d');
         $user_id = Auth::user()->id;
         
         if ($request->keterangan == 'masuk') {
@@ -58,4 +58,10 @@ class AbsenController extends Controller
 
         return redirect('absen')->with('notif', "Berhasil Absen $request->keterangan");
     }
+
+    function riwayat()  {
+        $absen = Absen::with('user')->get();
+        return view('admin.konten.karyawan.riwayat-absen', ['riwayat' => $absen]);
+    }
+
 }

@@ -47,6 +47,7 @@
                                     href="{{ url('profil') }}"><i class="bi bi-person-bounding-box"></i> Profil
                                 </a>
                             </li>
+       
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle {{ Request::is(['jabatan','karyawan']) ? 'active text-primary' : '' }}" href="#" id="dropdownId"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-person-badge"></i> Data</a>
@@ -54,6 +55,12 @@
                                     <a class="dropdown-item {{ Request::is('jabatan') ? 'active' : ''}}" href="{{ url('jabatan') }}"><i class="bi bi-diagram-2"></i> Jabatan</a>
                                     <a class="dropdown-item {{ Request::is('karyawan') ? 'active' : ''}}" href="{{ url('karyawan') }}"><i class="bi bi-people"></i> Karyawan</a>
                                 </div>
+                            </li>
+                            <li class="nav-item">
+                                <a 
+                                    class="nav-link {{ Request::is('riwayat') ? 'active text-primary' : '' }}" 
+                                    href="{{ url('riwayat') }}"><i class="bi bi-calendar"></i> Riwayat
+                                </a>
                             </li>
                         </ul>
                         <form method="POST" action="{{ Route('logout') }}" class="d-flex">

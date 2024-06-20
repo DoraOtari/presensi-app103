@@ -63,3 +63,4 @@ Route::put('karyawan/{karyawan}', [KaryawanController::class, 'update']);
 
 Route::get('/absen', [AbsenController::class, 'tampil']);
 Route::post('/absen', [AbsenController::class, 'simpan']);
+Route::get('/riwayat', [AbsenController::class,'riwayat']);

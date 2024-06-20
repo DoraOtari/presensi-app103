@@ -18,31 +18,44 @@
 
 <body>
     <main class="col-lg-3 mx-auto">
+        @if (session('notif'))
+            <div class="alert alert-success" role="alert">
+                <strong><i class="bi-bell"></i></strong> {{ session('notif') }}
+            </div>
+        @endif
+
         <form action="{{ url('/absen') }}" method="post">
             @csrf
-        <div id="my_camera" style="width:340px; height:240px;"></div>
-        <input id="tangkap" type="hidden" name="foto">
-        <div class="d-flex justify-content-between mt-4">
-            <button type="button" onclick="reset()" class="btn btn-success"><i class="bi-arrow-counterclockwise"></i></button>
-            <button type="button" onclick="rekam()" class="btn btn-primary"><i class="bi-camera"></i></button>
-        </div>
-        <div class="mt-2">
-            <label class="form-label">Keterangan</label> <br>
-            <div class="form-check  form-check-inline">
-                <input checked class="form-check-input" type="radio" name="keterangan" value="masuk">
-                <label for="" class="form-check-label">Masuk</label>
+            <div id="my_camera" style="width:340px; height:240px;"></div>
+            <input id="tangkap" type="hidden" name="foto">
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" onclick="reset()" class="btn btn-success"><i
+                        class="bi-arrow-counterclockwise"></i></button>
+                <button type="button" onclick="rekam()" class="btn btn-primary"><i class="bi-camera"></i></button>
             </div>
-            <div class="form-check  form-check-inline">
-                <input class="form-check-input" type="radio" name="keterangan" value="pulang">
-                <label for="" class="form-check-label">Pulang</label>
+            <div class="mt-2">
+                <label class="form-label">Keterangan</label> <br>
+                <div class="form-check  form-check-inline">
+                    <input checked class="form-check-input" type="radio" name="keterangan" value="masuk">
+                    <label for="" class="form-check-label">Masuk</label>
+                </div>
+                <div class="form-check  form-check-inline">
+                    <input class="form-check-input" type="radio" name="keterangan" value="pulang">
+                    <label for="" class="form-check-label">Pulang</label>
+                </div>
             </div>
-        </div>
-        <div id="map" style="height: 180px"></div>
-        <input type="hidden" id="lokasiUser" name="lokasi">
-        <div class="text-end mt-3">
-            <button type="submit" class="btn btn-dark">Submit</button>
-        </div>
-    </form>
+            <div id="map" style="height: 180px"></div>
+            <input type="hidden" id="lokasiUser" name="lokasi">
+            
+            <div class="d-flex justify-content-between">
+                <div class="mt-3">
+                    <a href="{{ url('/dashboard') }}" class="btn btn-warning">Dashboard</a>
+                </div>
+                <div class="text-end mt-3">
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </div>
+            </div>
+        </form>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
@@ -87,7 +100,7 @@
             radius: 15
         }).addTo(map);
 
-    
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
@@ -95,10 +108,10 @@
         }
 
         function showPosition(position) {
-        // posisi
-        var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
-        let lokasiUser = document.getElementById('lokasiUser');
-        lokasiUser.value = position.coords.latitude+','+position.coords.longitude;
+            // posisi
+            var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+            let lokasiUser = document.getElementById('lokasiUser');
+            lokasiUser.value = position.coords.latitude + ',' + position.coords.longitude;
         }
     </script>
 </body>
